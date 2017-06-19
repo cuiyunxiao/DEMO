@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="index-right">
-      <slide-show :slides="slides" :inv="invTime"></slide-show>
+      <slide-show :slides="slides" :inv="invTime" @onchange="doSomethingOnslidChange"></slide-show>
       <div class="index-board-list">
         <div
         class="index-board-item"
@@ -57,6 +57,11 @@ export default {
     }, (err) => {
       console.log(err)
     })
+  },
+  methods:{
+  doSomethingOnslidChange(){
+  console.log('doSomethingOnslidChange run!')
+    }
   },
   data () {
     return {
