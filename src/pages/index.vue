@@ -120,16 +120,17 @@ export default {
       ],
       newsList: [],
       productList: {
+       
         pc: {
-          title: 'PC产品',
+          title: 'PC产品业务',
           list: [
             {
               name: '数据统计',
               url: 'http://starcraft.com'
             },
-            {
-              name: '数据预测',
-              url: 'http://warcraft.com'
+           {
+             name:'数据预测',
+             url:'http://starcraft.com'
             },
             {
               name: '流量分析',
@@ -143,7 +144,7 @@ export default {
           ]
         },
         app: {
-          title: '手机应用类',
+          title: '手机应用类业务',
           last: true,
           list: [
             {
