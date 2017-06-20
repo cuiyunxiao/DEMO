@@ -4,7 +4,7 @@
       <div class="index-left-block">
         <h2>全部产品</h2>
         
-        <template v-for="product in productList">
+        <template v-for=" product in productList ">
           <h3>{{ product.title}}</h3>
           <ul>
             <li v-for="item in product.list">
@@ -27,16 +27,15 @@
     <div class="index-right">
       <slide-show :slides="slides" :inv="invTime" @onchange="doSomethingOnslidChange"></slide-show>
       <div class="index-board-list">
-        <div
-        class="index-board-item"
-        v-for="(item, index) in boardList"
-        :class="[{'line-last' : index % 2 !== 0}, 'index-board-' + item.id]">
-          <div class="index-board-item-inner" >
-            <h2>{{ item.title }}</h2>
-            <p>{{ item.description }}</p>
-            <div class="index-board-button">
-              <router-link class="button" :to="{path: 'detail/' + item.toKey}">立即购买</router-link>
-            </div>  
+        <div 
+           class="(item, index) in boardList" 
+           :class="[{'line-last' : index % 2 ! ==0},'index-board-' + item.id]"  >     
+             <div class="index-board-item-inner">
+             <h2>{{item.title}}</h2>
+             <p>{{item.description}}</p>
+             <div  class="index-board-button">
+                  <a href="" class="button>马上购买 </a>
+             </div>
           </div>
         </div>
       </div>
