@@ -27,15 +27,16 @@
     <div class="index-right">
       <slide-show :slides="slides" :inv="invTime" @onchange="doSomethingOnslidChange"></slide-show>
       <div class="index-board-list">
-        <div 
-           class="(item, index) in boardList" 
-           :class="[{'line-last' : index % 2 ! ==0},'index-board-' + item.id]"  >     
-             <div class="index-board-item-inner">
-             <h2>{{item.title}}</h2>
-             <p>{{item.description}}</p>
-             <div  class="index-board-button">
-                  <a href="" class="button>马上购买 </a>
-             </div>
+        <div
+        class="index-board-item"
+        v-for="(item, index) in boardList"
+        :class="[{'line-last' : index % 2 !== 0}, 'index-board-' + item.id]">
+          <div class="index-board-item-inner" >
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.description }}</p>
+            <div class="index-board-button">
+              <router-link class="button" :to="{path: 'detail/' + item.toKey}">马上购买</router-link>
+            </div>  
           </div>
         </div>
       </div>
@@ -49,14 +50,15 @@ export default {
   components: {
     slideShow
   },
-  created: function () {
+  created:function(){
     this.$http.get('api/getNewsList')
     .then((res) => {
       this.newsList = res.data
-    }, (err) => {
-      console.log(err)
+    },(err) => {
+    console.log(err)
     })
   },
+ 
   methods:{
   doSomethingOnslidChange(){
   console.log('doSomethingOnslidChange run!')
