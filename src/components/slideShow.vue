@@ -7,11 +7,11 @@
  </div>
  <h2>{{slides[nowIndex].title}}</h2>
  <ul class="slide-pages">
-    <li>&lt;</li>
+    <li @click="goto(preIndex)">&lt;</li>
     <li v-for="(item, index) in slides" @click="goto(index)">
-      <a>{{ index + 1}}</a>    
-    </li>
-    <li>&gt;</li>
+      <a :class="{on: index ===nowIndex} ">{{ index + 1}}</a>    
+    </li>1
+    <li @click="goto(nextIndex)">&gt;</li>
   </ul>
 </div>
 </template>
@@ -34,22 +34,23 @@ export default {
       isShow: true
     }
   },
+//使用计算属性完成翻页的功能
   computed: {
     prevIndex () {
-      if (this.nowIndex === 0) {
-        return this.slides.length - 1
+      if(this.nowIndex === 0){
+      return this.slides.length - 1
       }
       else {
         return this.nowIndex - 1
       } 
     },
     nextIndex () {
-      if (this.nowIndex === this.slides.length - 1) {
+      if ( this.nowIndex === this.slides.length - 1) {
         return 0
       }
-      else {
-        return this.nowIndex + 1
-      }
+     else  {
+     return this.nowIndex + 1
+     }
     }
   },
   methods: {
