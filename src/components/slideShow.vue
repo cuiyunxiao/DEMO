@@ -1,5 +1,5 @@
 <template>
- <div  class="slide-show">
+ <div  class="slide-show" @mouseover = "clearInv" @mouseout = "runInv">
  <div class="slide-img">
   <a :href="slides[nowIndex].href"> 
     <img :src="slides[nowIndex].src">
@@ -30,8 +30,8 @@ export default {
   },
   data () {
     return {
-      nowIndex: 0,
-      isShow: true
+     nowIndex:0,
+     isShow: true,
     }
   },
 //使用计算属性完成翻页的功能
@@ -55,12 +55,7 @@ export default {
   },
   methods: {
     goto (index) {
-      this.isShow = false
-      setTimeout(() => {
-        this.isShow = true
-        this.nowIndex = index
-        this.$emit('onchange',index)
-      }, 10)
+     this.nowIndex = index
     },
     runInv () {
       this.invId = setInterval(() => {
@@ -86,8 +81,7 @@ export default {
 }
 .slide-trans-old-leave-active {
   transition: all .5s;
-  transform: translateX(-900px);
-}
+ transform:translateX(-900px)
 .slide-show {
   position: relative;
   margin: 15px 15px 15px 0;
